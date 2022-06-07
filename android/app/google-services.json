@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "938278576687",
+    "project_id": "chatnow-dbd3f",
+    "storage_bucket": "chatnow-dbd3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938278576687:android:251a494fcb74150721dcda",
+        "android_client_info": {
+          "package_name": "com.example.chatnow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938278576687-1j82aokihcj8etjjqdpflt3bnd9bcs0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDelx_uGHQeXXHRf463LJoh1AlzOs6kXQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938278576687-1j82aokihcj8etjjqdpflt3bnd9bcs0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
