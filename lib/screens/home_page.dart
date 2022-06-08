@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:chatnow/providers/chat_provider.dart';
 import 'package:chatnow/screens/groupcall_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,6 +28,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final ScrollController scrollController = ScrollController();
+
+  late ChatProvider chatProvider;
 
   int _limit = 20;
   final int _limitIncrement = 20;
@@ -144,6 +147,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     authProvider = context.read<AuthProvider>();
     homeProvider = context.read<HomeProvider>();
+    chatProvider = context.read<ChatProvider>();
     if (authProvider.getFirebaseUserId()?.isNotEmpty == true) {
       currentUserId = authProvider.getFirebaseUserId()!;
     } else {
@@ -361,8 +365,13 @@ class _HomePageState extends State<HomePage> {
                 style: const TextStyle(color: Colors.black),
               ),
               trailing: Text(
-                "2",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: Sizes.dimen_20,color: Colors.red),
+                chatProvider
+                    .unreadedMessages(currentUserId,userChat.id)
+                    .toString(),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: Sizes.dimen_20,
+                    color: Colors.red),
               )),
         );
       }

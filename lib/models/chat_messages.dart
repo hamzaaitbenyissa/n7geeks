@@ -7,13 +7,16 @@ class ChatMessages {
   String timestamp;
   String content;
   int type;
+  bool isreaded;
 
   ChatMessages(
       {required this.idFrom,
       required this.idTo,
       required this.timestamp,
       required this.content,
-      required this.type});
+      required this.type,
+      required this.isreaded,
+      });
 
   Map<String, dynamic> toJson() {
     return {
@@ -22,6 +25,7 @@ class ChatMessages {
       FirestoreConstants.timestamp: timestamp,
       FirestoreConstants.content: content,
       FirestoreConstants.type: type,
+      FirestoreConstants.isreaded: isreaded,
     };
   }
 
@@ -31,12 +35,16 @@ class ChatMessages {
     String timestamp = documentSnapshot.get(FirestoreConstants.timestamp);
     String content = documentSnapshot.get(FirestoreConstants.content);
     int type = documentSnapshot.get(FirestoreConstants.type);
+    bool isreaded = documentSnapshot.get(FirestoreConstants.isreaded);
 
     return ChatMessages(
         idFrom: idFrom,
         idTo: idTo,
         timestamp: timestamp,
         content: content,
-        type: type);
+        type: type,
+        isreaded: isreaded
+        
+        );
   }
 }
