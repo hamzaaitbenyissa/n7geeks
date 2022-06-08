@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:chatnow/screens/groupcall_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -157,22 +158,25 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            centerTitle: true,
-            title: const Text('N7 Geeks'),
-            actions: [
-              IconButton(
-                  onPressed: () => googleSignOut(),
-                  icon: const Icon(Icons.logout)),
-              IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ProfilePage()));
-                  },
-                  icon: const Icon(Icons.person)),
-            ]),
+        appBar:
+            AppBar(centerTitle: true, title: const Text('N7 Geeks'), actions: [
+          IconButton(
+              onPressed: () => googleSignOut(), icon: const Icon(Icons.logout)),
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfilePage()));
+              },
+              icon: const Icon(Icons.person)),
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => VideoCallPage()));
+              },
+              icon: const Icon(Icons.video_call)),
+        ]),
         body: WillPopScope(
           onWillPop: onBackPress,
           child: Stack(
@@ -317,46 +321,49 @@ class _HomePageState extends State<HomePage> {
                         )));
           },
           child: ListTile(
-            leading: userChat.photoUrl.isNotEmpty
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(Sizes.dimen_30),
-                    child: Image.network(
-                      userChat.photoUrl,
-                      fit: BoxFit.cover,
-                      width: 50,
-                      height: 50,
-                      loadingBuilder: (BuildContext ctx, Widget child,
-                          ImageChunkEvent? loadingProgress) {
-                        if (loadingProgress == null) {
-                          return child;
-                        } else {
-                          return SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: CircularProgressIndicator(
-                                color: Colors.grey,
-                                value: loadingProgress.expectedTotalBytes !=
-                                        null
-                                    ? loadingProgress.cumulativeBytesLoaded /
-                                        loadingProgress.expectedTotalBytes!
-                                    : null),
-                          );
-                        }
-                      },
-                      errorBuilder: (context, object, stackTrace) {
-                        return const Icon(Icons.account_circle, size: 50);
-                      },
+              leading: userChat.photoUrl.isNotEmpty
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(Sizes.dimen_30),
+                      child: Image.network(
+                        userChat.photoUrl,
+                        fit: BoxFit.cover,
+                        width: 50,
+                        height: 50,
+                        loadingBuilder: (BuildContext ctx, Widget child,
+                            ImageChunkEvent? loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          } else {
+                            return SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: CircularProgressIndicator(
+                                  color: Colors.grey,
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes!
+                                      : null),
+                            );
+                          }
+                        },
+                        errorBuilder: (context, object, stackTrace) {
+                          return const Icon(Icons.account_circle, size: 50);
+                        },
+                      ),
+                    )
+                  : const Icon(
+                      Icons.account_circle,
+                      size: 50,
                     ),
-                  )
-                : const Icon(
-                    Icons.account_circle,
-                    size: 50,
-                  ),
-            title: Text(
-              userChat.displayName,
-              style: const TextStyle(color: Colors.black),
-            ),
-          ),
+              title: Text(
+                userChat.displayName,
+                style: const TextStyle(color: Colors.black),
+              ),
+              trailing: Text(
+                "2",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: Sizes.dimen_20,color: Colors.red),
+              )),
         );
       }
     } else {
