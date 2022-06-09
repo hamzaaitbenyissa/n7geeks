@@ -33,6 +33,20 @@ class ChatProvider {
         .update(dataUpdate);
   }
 
+  Future<void> makeAllMessagesReaded(String groupChatId) async {
+    var collection = firebaseFirestore
+        .collection(FirestoreConstants.pathMessageCollection)
+        .doc(groupChatId)
+        .collection(groupChatId);
+        
+    var querySnapshots = await collection.get();
+    for (var doc in querySnapshots.docs) {
+      await doc.reference.update({
+        FirestoreConstants.isreaded: true,
+      });
+    }
+  }
+
   Stream<QuerySnapshot> getChatMessage(String groupChatId, int limit) {
     return firebaseFirestore
         .collection(FirestoreConstants.pathMessageCollection)
@@ -43,34 +57,20 @@ class ChatProvider {
         .snapshots();
   }
 
-  Stream<QuerySnapshot> getChatMessage2(String groupChatId) {
-    return firebaseFirestore
-        .collection(FirestoreConstants.pathMessageCollection)
-        .doc(groupChatId)
-        .collection(groupChatId)
-        .orderBy(FirestoreConstants.timestamp, descending: true)
-        .snapshots();
-  }
-
-  int unreadedMessages(String currentUserId, String userChatid) {
+  Stream<QuerySnapshot> getChatMessage2(
+      String currentUserId, String userChatid) {
     String groupChatId = "";
     if (currentUserId.compareTo(userChatid) > 0) {
       groupChatId = '$currentUserId - ${userChatid}';
     } else {
       groupChatId = '${userChatid} - $currentUserId';
     }
-    print("groupChatId************************" + groupChatId);
-
-    List<chatcheck> checkinglist = [];
-
-    // to dooooo
-    // checkinglist = this.getChatMessage2(groupChatId).
-    // // map((qShot) => qShot.docs
-    // //     .map((doc) => chatcheck( id: "111",readed: true ))
-    // //     .toList()) as List<chatcheck>;
-    
-    return 1;
-
+    return firebaseFirestore
+        .collection(FirestoreConstants.pathMessageCollection)
+        .doc(groupChatId)
+        .collection(groupChatId)
+        .orderBy(FirestoreConstants.timestamp, descending: true)
+        .snapshots();
   }
 
   void sendChatMessage(String content, int type, String groupChatId,

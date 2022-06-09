@@ -97,6 +97,8 @@ class _ChatPageState extends State<ChatPage> {
     }
     chatProvider.updateFirestoreData(FirestoreConstants.pathUserCollection,
         currentUserId, {FirestoreConstants.chattingWith: widget.peerId});
+        
+    chatProvider.makeAllMessagesReaded(groupChatId);
   }
 
   Future getImage() async {

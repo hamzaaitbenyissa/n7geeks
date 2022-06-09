@@ -21,7 +21,8 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   TextEditingController? displayNameController;
   TextEditingController? aboutMeController;
-  final TextEditingController _phoneController = TextEditingController();
+  TextEditingController? phoneController;
+  late final TextEditingController _phoneController = TextEditingController();
 
 //  late means that the field will be initialized when you use it for the first time
   late String currentUserId;
@@ -50,14 +51,15 @@ class _ProfilePageState extends State<ProfilePage> {
       id = profileProvider.getPrefs(FirestoreConstants.id) ?? "";
       displayName =
           profileProvider.getPrefs(FirestoreConstants.displayName) ?? "";
-
-      photoUrl = profileProvider.getPrefs(FirestoreConstants.photoUrl) ?? "";
-      phoneNumber =
-          profileProvider.getPrefs(FirestoreConstants.phoneNumber) ?? "";
       aboutMe = profileProvider.getPrefs(FirestoreConstants.aboutMe) ?? "";
+      photoUrl = profileProvider.getPrefs(FirestoreConstants.photoUrl) ?? "";
+      print ( "photoUrl=========================>" + photoUrl); 
+      phoneNumber =
+          profileProvider.getPrefs(FirestoreConstants.phoneNumber) ?? "test";
     });
     displayNameController = TextEditingController(text: displayName);
     aboutMeController = TextEditingController(text: aboutMe);
+    phoneController = TextEditingController(text: phoneNumber);
   }
 
   Future getImage() async {
@@ -139,7 +141,6 @@ class _ProfilePageState extends State<ProfilePage> {
         photoUrl,
       );
       await profileProvider.setPrefs(FirestoreConstants.aboutMe, aboutMe);
-
       setState(() {
         isLoading = false;
       });
@@ -213,7 +214,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               )
                             : const Icon(
                                 Icons.account_circle,
-                                size: 90,
+                                size: 0,
                                 color: AppColors.greyColor,
                               )
                         : ClipRRect(
@@ -259,6 +260,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     TextField(
                       decoration: kTextInputDecoration.copyWith(
                           hintText: 'Write about yourself...'),
+                      controller: aboutMeController,
                       onChanged: (value) {
                         aboutMe = value;
                       },
@@ -302,18 +304,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     TextField(
                       decoration: kTextInputDecoration.copyWith(
-                        hintText: 'Phone Number',
-                        prefix: Padding(
-                          padding: const EdgeInsets.all(4),
-                          child: Text(
-                            dialCodeDigits,
-                            style: const TextStyle(color: Colors.grey),
-                          ),
-                        ),
-                      ),
-                      controller: _phoneController,
-                      maxLength: 12,
-                      keyboardType: TextInputType.number,
+                          hintText: 'phone number...'),
+                      controller: phoneController,
+                      onChanged: (value) {
+                        phoneNumber = value;
+                      },
                     ),
                   ],
                 ),

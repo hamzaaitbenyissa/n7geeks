@@ -97,6 +97,7 @@ class AuthProvider extends ChangeNotifier {
         }
         _status = Status.authenticated;
         notifyListeners();
+        
         return true;
       } else {
         _status = Status.authenticateError;
