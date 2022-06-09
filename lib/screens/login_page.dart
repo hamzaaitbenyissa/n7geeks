@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               vertical50,
               const Text(
-                'Welcome to N7geeks Chat',
+                'Welcome to N7geeks Talk',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: Sizes.dimen_26,
