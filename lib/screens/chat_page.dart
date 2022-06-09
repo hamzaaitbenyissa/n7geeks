@@ -97,7 +97,7 @@ class _ChatPageState extends State<ChatPage> {
     }
     chatProvider.updateFirestoreData(FirestoreConstants.pathUserCollection,
         currentUserId, {FirestoreConstants.chattingWith: widget.peerId});
-        
+
     chatProvider.makeAllMessagesReaded(groupChatId);
   }
 
@@ -204,7 +204,7 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Chatting with ${widget.peerNickname}'.trim()),
+        title: Text('${widget.peerNickname}'.trim()),
         actions: [
           IconButton(
             onPressed: () {
@@ -302,7 +302,8 @@ class _ChatPageState extends State<ChatPage> {
                         chatContent: chatMessages.content,
                         color: AppColors.spaceLight,
                         textColor: AppColors.white,
-                        margin: const EdgeInsets.only(right: Sizes.dimen_10),
+                        margin: const EdgeInsets.only(
+                            right: Sizes.dimen_10, top: Sizes.dimen_8),
                       )
                     : chatMessages.type == MessageType.image
                         ? Container(
@@ -426,7 +427,7 @@ class _ChatPageState extends State<ChatPage> {
                         color: AppColors.burgundy,
                         textColor: AppColors.white,
                         chatContent: chatMessages.content,
-                        margin: const EdgeInsets.only(left: Sizes.dimen_10),
+                        margin: const EdgeInsets.only(left: Sizes.dimen_10,top: Sizes.dimen_8),
                       )
                     : chatMessages.type == MessageType.image
                         ? Container(
@@ -484,7 +485,7 @@ class _ChatPageState extends State<ChatPage> {
                             buildItem(index, snapshot.data?.docs[index]));
                   } else {
                     return const Center(
-                      child: Text('No messages...'),
+                      child: Text('No messages yet'),
                     );
                   }
                 } else {
