@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
                 Text(
-                  'Exit Application',
+                  'Exit',
                   style: TextStyle(color: AppColors.white),
                 ),
                 Icon(
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               vertical10,
               const Text(
-                'Are you sure?',
+                'Are you sure you want to exit?',
                 textAlign: TextAlign.center,
                 style:
                     TextStyle(color: AppColors.white, fontSize: Sizes.dimen_16),
@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar:
-            AppBar(centerTitle: true, title: const Text('N7 Geeks'), actions: [
+            AppBar(centerTitle: true, title: const Text('N7 Geeks Talk'), actions: [
           IconButton(
               onPressed: () {
                 Navigator.push(

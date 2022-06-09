@@ -205,19 +205,6 @@ class _ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('${widget.peerNickname}'.trim()),
-        actions: [
-          IconButton(
-            onPressed: () {
-              ProfileProvider profileProvider;
-              profileProvider = context.read<ProfileProvider>();
-              String callPhoneNumber =
-                  profileProvider.getPrefs(FirestoreConstants.phoneNumber) ??
-                      "";
-              _callPhoneNumber(callPhoneNumber);
-            },
-            icon: const Icon(Icons.phone),
-          ),
-        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -427,7 +414,8 @@ class _ChatPageState extends State<ChatPage> {
                         color: AppColors.burgundy,
                         textColor: AppColors.white,
                         chatContent: chatMessages.content,
-                        margin: const EdgeInsets.only(left: Sizes.dimen_10,top: Sizes.dimen_8),
+                        margin: const EdgeInsets.only(
+                            left: Sizes.dimen_10, top: Sizes.dimen_8),
                       )
                     : chatMessages.type == MessageType.image
                         ? Container(

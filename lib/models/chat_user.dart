@@ -33,7 +33,6 @@ class ChatUser extends Equatable {
 
   Map<String, dynamic> toJson() => {
         FirestoreConstants.displayName: displayName,
-        FirestoreConstants.photoUrl: photoUrl,
         FirestoreConstants.phoneNumber: phoneNumber,
         FirestoreConstants.aboutMe: aboutMe,
       };

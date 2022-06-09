@@ -22,11 +22,10 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController? displayNameController;
   TextEditingController? aboutMeController;
   TextEditingController? phoneController;
-  late final TextEditingController _phoneController = TextEditingController();
 
 //  late means that the field will be initialized when you use it for the first time
   late String currentUserId;
-  String dialCodeDigits = '+00';
+  String dialCodeDigits = '+212';
   String id = '';
   String displayName = '';
   String photoUrl = '';
@@ -118,8 +117,8 @@ class _ProfilePageState extends State<ProfilePage> {
     focusNodeNickname.unfocus();
     setState(() {
       isLoading = true;
-      if (dialCodeDigits != "+00" && _phoneController.text != "") {
-        phoneNumber = dialCodeDigits + _phoneController.text.toString();
+      if (dialCodeDigits != "+00" && phoneController!.text != "") {
+        phoneNumber = dialCodeDigits + phoneController!.text.toString();
       }
     });
     ChatUser updateInfo = ChatUser(
@@ -128,6 +127,7 @@ class _ProfilePageState extends State<ProfilePage> {
         displayName: displayName,
         phoneNumber: phoneNumber,
         aboutMe: aboutMe);
+
     profileProvider
         .updateFirestoreData(
             FirestoreConstants.pathUserCollection, id, updateInfo.toJson())
@@ -135,7 +135,7 @@ class _ProfilePageState extends State<ProfilePage> {
       await profileProvider.setPrefs(
           FirestoreConstants.displayName, displayName);
       await profileProvider.setPrefs(
-          FirestoreConstants.phoneNumber, phoneNumber);
+          FirestoreConstants.phoneNumber, phoneNumber.substring(dialCodeDigits.length) );
       await profileProvider.setPrefs(
         FirestoreConstants.photoUrl,
         photoUrl,
@@ -144,7 +144,7 @@ class _ProfilePageState extends State<ProfilePage> {
       setState(() {
         isLoading = false;
       });
-      Fluttertoast.showToast(msg: 'UpdateSuccess');
+      Fluttertoast.showToast(msg: 'Update Success');
     }).catchError((onError) {
       Fluttertoast.showToast(msg: onError.toString());
     });
