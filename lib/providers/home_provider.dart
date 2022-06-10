@@ -20,7 +20,7 @@ class HomeProvider {
       return firebaseFirestore
           .collection(collectionPath)
           .limit(limit)
-          .where(FirestoreConstants.displayName, isEqualTo: textSearch)
+          .where(FirestoreConstants.displayName, isGreaterThanOrEqualTo: textSearch)
           .snapshots();
     } else {
       return firebaseFirestore

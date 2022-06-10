@@ -253,6 +253,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             child: TextFormField(
+              style: TextStyle(color: Colors.white),
               textInputAction: TextInputAction.search,
               controller: searchTextEditingController,
               onChanged: (value) {
