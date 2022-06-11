@@ -46,13 +46,10 @@ class _SplashPageState extends State<SplashPage> {
               style: TextStyle(
                   fontWeight: FontWeight.bold, fontSize: Sizes.dimen_18),
             ),
-
             const SizedBox(
               height: 20,
             ),
-
             Lottie.asset('assets/images/splash1.json'),
-
             const SizedBox(
               height: 20,
             ),

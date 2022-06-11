@@ -328,7 +328,6 @@ class _ChatPageState extends State<ChatPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 isMessageReceived(index)
-                    // left side (received message)
                     ? Container(
                         clipBehavior: Clip.hardEdge,
                         decoration: BoxDecoration(
