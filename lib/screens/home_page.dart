@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (BuildContext ctx) {
           return SimpleDialog(
-            backgroundColor: AppColors.burgundy,
+            backgroundColor: AppColors.primarycolor,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [

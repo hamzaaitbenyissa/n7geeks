@@ -16,7 +16,6 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Future.delayed(const Duration(seconds: 5), () {
       checkSignedIn();
@@ -47,11 +46,6 @@ class _SplashPageState extends State<SplashPage> {
               style: TextStyle(
                   fontWeight: FontWeight.bold, fontSize: Sizes.dimen_18),
             ),
-            // Image.asset(
-            //   'assets/images/splash4.gif',
-            //   width: 300,
-            //   height: 300,
-            // ),
 
             const SizedBox(
               height: 20,
@@ -63,7 +57,7 @@ class _SplashPageState extends State<SplashPage> {
               height: 20,
             ),
             const Text(
-              "N7geeks Chat Application",
+              "N7geeks Community Application",
               style: TextStyle(
                   fontWeight: FontWeight.bold, fontSize: Sizes.dimen_18),
             ),

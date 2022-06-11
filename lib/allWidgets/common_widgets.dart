@@ -1,6 +1,5 @@
 import 'package:n7geekstalk/allConstants/all_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:n7geekstalk/screens/full_image_view.dart';
 import 'package:n7geekstalk/screens/viewImagePage.dart';
 
 Widget errorContainer() {
