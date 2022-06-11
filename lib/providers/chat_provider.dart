@@ -6,8 +6,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:chatnow/allConstants/all_constants.dart';
-import 'package:chatnow/models/chat_messages.dart';
+import 'package:n7geekstalk/allConstants/all_constants.dart';
+import 'package:n7geekstalk/models/chat_messages.dart';
 
 class ChatProvider {
   final SharedPreferences prefs;

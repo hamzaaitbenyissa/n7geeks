@@ -5,11 +5,11 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:chatnow/allConstants/all_constants.dart';
-import 'package:chatnow/allConstants/app_constants.dart';
-import 'package:chatnow/allWidgets/loading_view.dart';
-import 'package:chatnow/models/chat_user.dart';
-import 'package:chatnow/providers/profile_provider.dart';
+import 'package:n7geekstalk/allConstants/all_constants.dart';
+import 'package:n7geekstalk/allConstants/app_constants.dart';
+import 'package:n7geekstalk/allWidgets/loading_view.dart';
+import 'package:n7geekstalk/models/chat_user.dart';
+import 'package:n7geekstalk/providers/profile_provider.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);

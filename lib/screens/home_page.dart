@@ -1,23 +1,23 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:chatnow/models/chat_messages.dart';
-import 'package:chatnow/providers/chat_provider.dart';
-import 'package:chatnow/screens/groupcall_page.dart';
+import 'package:n7geekstalk/models/chat_messages.dart';
+import 'package:n7geekstalk/providers/chat_provider.dart';
+import 'package:n7geekstalk/screens/groupcall_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
-import 'package:chatnow/allConstants/all_constants.dart';
-import 'package:chatnow/allWidgets/loading_view.dart';
-import 'package:chatnow/models/chat_user.dart';
-import 'package:chatnow/providers/auth_provider.dart';
-import 'package:chatnow/providers/home_provider.dart';
-import 'package:chatnow/screens/chat_page.dart';
-import 'package:chatnow/screens/login_page.dart';
-import 'package:chatnow/screens/profile_page.dart';
-import 'package:chatnow/utilities/debouncer.dart';
-import 'package:chatnow/utilities/keyboard_utils.dart';
+import 'package:n7geekstalk/allConstants/all_constants.dart';
+import 'package:n7geekstalk/allWidgets/loading_view.dart';
+import 'package:n7geekstalk/models/chat_user.dart';
+import 'package:n7geekstalk/providers/auth_provider.dart';
+import 'package:n7geekstalk/providers/home_provider.dart';
+import 'package:n7geekstalk/screens/chat_page.dart';
+import 'package:n7geekstalk/screens/login_page.dart';
+import 'package:n7geekstalk/screens/profile_page.dart';
+import 'package:n7geekstalk/utilities/debouncer.dart';
+import 'package:n7geekstalk/utilities/keyboard_utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

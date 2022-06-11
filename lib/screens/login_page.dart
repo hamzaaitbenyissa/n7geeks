@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
-import 'package:chatnow/allConstants/all_constants.dart';
-import 'package:chatnow/providers/auth_provider.dart';
-import 'package:chatnow/screens/home_page.dart';
+import 'package:n7geekstalk/allConstants/all_constants.dart';
+import 'package:n7geekstalk/providers/auth_provider.dart';
+import 'package:n7geekstalk/screens/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

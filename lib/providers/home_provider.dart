@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:chatnow/allConstants/all_constants.dart';
+import 'package:n7geekstalk/allConstants/all_constants.dart';
 
 class HomeProvider {
   final FirebaseFirestore firebaseFirestore;

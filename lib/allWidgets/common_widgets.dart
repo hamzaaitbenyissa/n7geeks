@@ -1,5 +1,7 @@
-import 'package:chatnow/allConstants/all_constants.dart';
+import 'package:n7geekstalk/allConstants/all_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:n7geekstalk/screens/full_image_view.dart';
+import 'package:n7geekstalk/screens/viewImagePage.dart';
 
 Widget errorContainer() {
   return Container(
@@ -12,9 +14,14 @@ Widget errorContainer() {
   );
 }
 
-Widget chatImage({required String imageSrc, required Function onTap}) {
+Widget chatImage({required String imageSrc, context}) {
   return OutlinedButton(
-    onPressed: onTap(),
+    onPressed: () {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ViewImagePage(imageSrc: imageSrc)));
+    },
     child: Image.network(
       imageSrc,
       width: Sizes.dimen_200,

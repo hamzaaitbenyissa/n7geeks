@@ -1,5 +1,5 @@
 import 'package:agora_uikit/agora_uikit.dart';
-import 'package:chatnow/allConstants/all_constants.dart';
+import 'package:n7geekstalk/allConstants/all_constants.dart';
 import 'package:flutter/material.dart';
 
 class VideoCallPage extends StatefulWidget {

@@ -6,14 +6,12 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:chatnow/allConstants/all_constants.dart';
-import 'package:chatnow/allWidgets/common_widgets.dart';
-import 'package:chatnow/models/chat_messages.dart';
-import 'package:chatnow/providers/auth_provider.dart';
-import 'package:chatnow/providers/chat_provider.dart';
-import 'package:chatnow/providers/profile_provider.dart';
-import 'package:chatnow/screens/login_page.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:n7geekstalk/allConstants/all_constants.dart';
+import 'package:n7geekstalk/allWidgets/common_widgets.dart';
+import 'package:n7geekstalk/models/chat_messages.dart';
+import 'package:n7geekstalk/providers/auth_provider.dart';
+import 'package:n7geekstalk/providers/chat_provider.dart';
+import 'package:n7geekstalk/screens/login_page.dart';
 
 class ChatPage extends StatefulWidget {
   final String peerId;
@@ -44,7 +42,6 @@ class _ChatPageState extends State<ChatPage> {
 
   File? imageFile;
   bool isLoading = false;
-  bool isShowSticker = false;
   String imageUrl = '';
 
   final TextEditingController textEditingController = TextEditingController();
@@ -59,8 +56,6 @@ class _ChatPageState extends State<ChatPage> {
     super.initState();
     chatProvider = context.read<ChatProvider>();
     authProvider = context.read<AuthProvider>();
-
-    focusNode.addListener(onFocusChanged);
     scrollController.addListener(_scrollListener);
     readLocal();
   }
@@ -70,14 +65,6 @@ class _ChatPageState extends State<ChatPage> {
         !scrollController.position.outOfRange) {
       setState(() {
         _limit += _limitIncrement;
-      });
-    }
-  }
-
-  void onFocusChanged() {
-    if (focusNode.hasFocus) {
-      setState(() {
-        isShowSticker = false;
       });
     }
   }
@@ -113,34 +100,6 @@ class _ChatPageState extends State<ChatPage> {
         });
         uploadImageFile();
       }
-    }
-  }
-
-  void getSticker() {
-    focusNode.unfocus();
-    setState(() {
-      isShowSticker = !isShowSticker;
-    });
-  }
-
-  Future<bool> onBackPressed() {
-    if (isShowSticker) {
-      setState(() {
-        isShowSticker = false;
-      });
-    } else {
-      chatProvider.updateFirestoreData(FirestoreConstants.pathUserCollection,
-          currentUserId, {FirestoreConstants.chattingWith: null});
-    }
-    return Future.value(false);
-  }
-
-  void _callPhoneNumber(String phoneNumber) async {
-    var url = 'tel://$phoneNumber';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Error Occurred';
     }
   }
 
@@ -211,7 +170,7 @@ class _ChatPageState extends State<ChatPage> {
           padding: const EdgeInsets.symmetric(horizontal: Sizes.dimen_8),
           child: Column(
             children: [
-              buildListMessage(),
+              buildListMessage(context),
               buildMessageInput(),
             ],
           ),
@@ -273,11 +232,10 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  Widget buildItem(int index, DocumentSnapshot? documentSnapshot) {
+  Widget buildItem(BuildContext context,int index, DocumentSnapshot? documentSnapshot) {
     if (documentSnapshot != null) {
       ChatMessages chatMessages = ChatMessages.fromDocument(documentSnapshot);
       if (chatMessages.idFrom == currentUserId) {
-        // right side (my message)
         return Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -297,7 +255,7 @@ class _ChatPageState extends State<ChatPage> {
                             margin: const EdgeInsets.only(
                                 right: Sizes.dimen_10, top: Sizes.dimen_10),
                             child: chatImage(
-                                imageSrc: chatMessages.content, onTap: () {}),
+                                imageSrc: chatMessages.content, context: context),
                           )
                         : const SizedBox.shrink(),
                 isMessageSent(index)
@@ -422,7 +380,7 @@ class _ChatPageState extends State<ChatPage> {
                             margin: const EdgeInsets.only(
                                 left: Sizes.dimen_10, top: Sizes.dimen_10),
                             child: chatImage(
-                                imageSrc: chatMessages.content, onTap: () {}),
+                                imageSrc: chatMessages.content, context: context),
                           )
                         : const SizedBox.shrink(),
               ],
@@ -454,7 +412,7 @@ class _ChatPageState extends State<ChatPage> {
     }
   }
 
-  Widget buildListMessage() {
+  Widget buildListMessage(BuildContext context2) {
     return Flexible(
       child: groupChatId.isNotEmpty
           ? StreamBuilder<QuerySnapshot>(
@@ -470,7 +428,7 @@ class _ChatPageState extends State<ChatPage> {
                         reverse: true,
                         controller: scrollController,
                         itemBuilder: (context, index) =>
-                            buildItem(index, snapshot.data?.docs[index]));
+                            buildItem(context2,index, snapshot.data?.docs[index]));
                   } else {
                     return const Center(
                       child: Text('No messages yet'),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:chatnow/allConstants/all_constants.dart';
-import 'package:chatnow/providers/auth_provider.dart';
-import 'package:chatnow/screens/home_page.dart';
-import 'package:chatnow/screens/login_page.dart';
+import 'package:n7geekstalk/allConstants/all_constants.dart';
+import 'package:n7geekstalk/providers/auth_provider.dart';
+import 'package:n7geekstalk/screens/home_page.dart';
+import 'package:n7geekstalk/screens/login_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);

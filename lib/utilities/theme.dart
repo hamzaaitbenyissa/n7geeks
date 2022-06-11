@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chatnow/allConstants/all_constants.dart';
+import 'package:n7geekstalk/allConstants/all_constants.dart';
 
 final appTheme = ThemeData(
   primaryColor: AppColors.spaceLight,

@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:chatnow/firebase_options.dart';
-import 'package:chatnow/providers/auth_provider.dart';
-import 'package:chatnow/providers/chat_provider.dart';
-import 'package:chatnow/providers/home_provider.dart';
-import 'package:chatnow/providers/profile_provider.dart';
-import 'package:chatnow/screens/splash_page.dart';
-import 'package:chatnow/utilities/theme.dart';
+import 'package:n7geekstalk/firebase_options.dart';
+import 'package:n7geekstalk/providers/auth_provider.dart';
+import 'package:n7geekstalk/providers/chat_provider.dart';
+import 'package:n7geekstalk/providers/home_provider.dart';
+import 'package:n7geekstalk/providers/profile_provider.dart';
+import 'package:n7geekstalk/screens/splash_page.dart';
+import 'package:n7geekstalk/utilities/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

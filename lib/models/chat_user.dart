@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:chatnow/allConstants/all_constants.dart';
+import 'package:n7geekstalk/allConstants/all_constants.dart';
 
 class ChatUser extends Equatable {
   final String id;
@@ -60,6 +60,5 @@ class ChatUser extends Equatable {
         aboutMe: aboutMe);
   }
   @override
-  // TODO: implement props
   List<Object?> get props => [id, photoUrl, displayName, phoneNumber, aboutMe];
 }
