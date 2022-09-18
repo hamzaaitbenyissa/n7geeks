@@ -1,16 +1,10 @@
 # N7geeks Talk
 
-A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![1](https://user-images.githubusercontent.com/85696348/190894735-6545b8e7-552d-4a66-a328-474406764c8b.jpg)
+![2](https://user-images.githubusercontent.com/85696348/190894738-8e8000b5-7d54-4379-ae7b-609bceb76ccb.jpg)
+![3](https://user-images.githubusercontent.com/85696348/190894739-de9daec5-134f-4827-be4d-ea2a02dd1434.jpg)
+![4](https://user-images.githubusercontent.com/85696348/190894740-914a9830-81f0-4471-8fa3-7fdd1dc718c6.jpg)
+![5](https://user-images.githubusercontent.com/85696348/190894741-e22140a6-81a5-4c48-b749-40130d4ee80f.jpg)
+![6](https://user-images.githubusercontent.com/85696348/190894742-b98ce418-3a5d-423c-934a-248b1f233fc4.jpg)
+![7](https://user-images.githubusercontent.com/85696348/190894743-31d6d696-09f2-46cf-b85b-7e40484fd43d.jpg)
